@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: balama/kiashop:0.1.7-kia-website # Nouveau dépôt DockerHub
+        image: balama/kiashop:0.1.9-kia-website # Nouveau dépôt DockerHub
         ports:
         - containerPort: 80
 ---
