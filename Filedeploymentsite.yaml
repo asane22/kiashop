@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
+  namespace: kiashop  # Ajout du namespace
   labels:
     app: nginx
 spec:
@@ -16,7 +17,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: balama/kiashop:0.1.3-kia-website # Nouveau dépôt DockerHub
+        image: balama/nianthio/my-nginx:latest # Nouveau dépôt DockerHub
         ports:
         - containerPort: 80
 ---
@@ -24,11 +25,13 @@ apiVersion: v1
 kind: Service
 metadata:
   name: nginx-service
+  namespace: kiashop  # Ajout du namespace
 spec:
   selector:
     app: nginx
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
+      port: 80     # Port interne du service
+      targetPort: 80 # Port du conteneur
+      nodePort: 30080 # Port externe sur lequel le service sera accessible
   type: NodePort
