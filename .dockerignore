@@ -1,0 +1,45 @@
+# /etc/nginx/nginx.conf
+
+user nginx;
+worker_processes auto;
+
+# Bloc des événements
+events {
+    worker_connections 1024;
+}
+
+# Bloc HTTP principal
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    # Compression
+    gzip  on;
+
+    # Définir le dossier de racine du serveur
+    root /var/www/html;  # Assurez-vous que ce chemin est correct
+    index index.php index.html index.htm;
+
+    server {
+        listen 80;
+        server_name localhost;
+
+        # Location pour les fichiers statiques
+        location / {
+            try_files $uri $uri/ =404;
+        }
+
+        # Traitement des fichiers PHP via PHP-FPM
+        location ~ \.php$ {
+            include snippets/fastcgi-php.conf;
+            fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;  # Assurez-vous que la version de PHP est correcte
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            include fastcgi_params;
+        }
+
+        # Sécuriser les fichiers .ht
+        location ~ /\.ht {
+            deny all;
+        }
+    }
+}
