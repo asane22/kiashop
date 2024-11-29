@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: balama/nianthio/my-nginx:latest # Nouveau dépôt DockerHub
+        image: balama/kiashop:0.1.3-kia-website # Nouveau dépôt DockerHub
         ports:
         - containerPort: 80
 ---
