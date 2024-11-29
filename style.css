@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f9f9f9;
 }
 
 header {
@@ -17,12 +17,13 @@ header h1 {
 }
 
 nav ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
 }
 
 nav ul li {
-    display: inline;
     margin: 0 15px;
 }
 
@@ -31,33 +32,56 @@ nav ul li a {
     text-decoration: none;
 }
 
-.hero {
+main {
+    padding: 20px;
     text-align: center;
-    padding: 50px;
-    background-color: #fff;
 }
 
-.hero h2 {
-    font-size: 36px;
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
 }
 
-.hero p {
-    font-size: 18px;
-    margin: 20px 0;
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
-.hero-image {
-    width: 100%;
-    max-width: 1000px;
+.product-item {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.product-item:hover {
+    transform: scale(1.05);
+}
+
+.product-item img {
+    max-width: 100%;
     height: auto;
+    border-radius: 8px;
+}
+
+.product-item h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.product-item p {
+    font-size: 16px;
+    color: #333;
 }
 
 footer {
-    text-align: center;
     background-color: #333;
     color: white;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
 }
