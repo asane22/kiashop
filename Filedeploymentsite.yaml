@@ -34,4 +34,4 @@ spec:
       port: 80     # Port interne du service
       targetPort: 80 # Port du conteneur
       nodePort: 30080 # Port externe sur lequel le service sera accessible
-  type: NodePort
+  type: LoadBalancer
