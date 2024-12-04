@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kiashop
+#  namespace: tomcat-namespace
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+  - hosts:
+    - kiashop.gainde2000.sn
+    secretName: ingress-certificat-gainde
+  rules:
+  - host: kiashop.gainde2000.sn
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kiashop-external-name
+            port:
+              number: 80
