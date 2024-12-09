@@ -10,7 +10,7 @@ spec:
   tls:
   - hosts:
     - kiashop.gainde2000.sn
-    secretName: ingress-certificat-gainde
+    secretName: certificat-gainde
   rules:
   - host: kiashop.gainde2000.sn
     http:
