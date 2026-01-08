@@ -29,7 +29,7 @@ metadata:
   name: kiashop-service
   namespace: kiashop  # Ajout du namespace
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
     - name: tomcat-port
       port: 80     # Port interne du service
