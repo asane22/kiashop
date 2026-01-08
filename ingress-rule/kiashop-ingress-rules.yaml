@@ -2,11 +2,11 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: kiashop
-#  namespace: tomcat-namespace
+  namespace: kiashop   # Assurez-vous que le service est dans le même namespace
   annotations:
-    kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx   # Remplace l'annotation dépréciée
   tls:
   - hosts:
     - kiashop.gainde2000.sn
@@ -19,6 +19,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: kiashop-external-name
+            name: kiashop-service   # Nom du Service correct
             port:
               number: 80
